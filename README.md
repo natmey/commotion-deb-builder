@@ -3,8 +3,12 @@ commotion-deb-builder
 
 A simple Python script to clone Commotion Wireless repos, and build them into Debian packages.
 
-It reads through a configuration file which specifies repos and branches to build from; and then uses `git-buildpackage` to turn them into debian packages. It is presumed that your system already has all of the build prerequisites. The script will likely crash if you do not.
+It reads through a configuration file which specifies repos and branches to build from; and then uses `git-buildpackage` to turn them into debian packages. The script will likely crash if you do not.
 
+Installing
+----------
+
+It is presumed that your system already has all of the build prerequisites, like `git-buildpackage`. It is also presumed that you have installed all dependencies that these packages will require.
 
 Usage
 -----
@@ -34,7 +38,6 @@ Right now the only configuration options in the configuration file are:
 `repos_file` is the complete system path to the file that has all of the repos and associated information described above.
 
 `dst` is the directory where a directory named after the time at which the script rant. In that sub-directory,  all of the source repos will be cloned, and the finished debs placed.
-
 
 What is it doing?
 -----------------
