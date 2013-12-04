@@ -1,0 +1,7 @@
+https://github.com/opentechinstitute/olsrd.git commotion commotion olsrd
+https://github.com/opentechinstitute/serval-dna.git commotion-wireless commotion-wireless serval-dna
+https://github.com/opentechinstitute/commotion-service-manager.git master master commotion-service-manager
+https://github.com/opentechinstitute/serval-crypto.git master master serval-crypto
+https://github.com/opentechinstitute/commotion-linux-py.git master master commotion-linux-py
+https://github.com/opentechinstitute/luci-commotion-linux.git master master luci-commotion-linux
+https://github.com/opentechinstitute/commotion-mesh-applet.git master master commotion-mesh-applet
