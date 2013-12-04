@@ -1,0 +1,55 @@
+#!/usr/bin/python
+#
+# This script is written to pull in a set of Commotion git repos
+# and build against the Debian branches to produce unsigned debs.
+#
+# The goal is to use this, either by code or example, in future 
+# integration with something like Jenkins.
+
+
+# import the libs we need
+import os
+import configparser
+import datetime 
+
+# function to:
+# grab the repos from a file, and pop them into an array
+# returns an array
+def repos(repos_file):
+   array = []
+   with open(repos_file, 'r') as f:       
+      for line in f:
+         repodata = line.split()
+         array.append((repodata))
+   return array
+
+# here's where the actual script starts
+
+# grab and variablize configs
+config = configparser.ConfigParser()
+config.read('./build-commotion.conf')
+repos_file = config['default']['repos_file']
+dst = config['default']['dst']
+
+# create a directory for this build
+now = datetime.datetime.now()
+date = now.strftime("%Y-%m-%d_%H-%M")
+newdir = "%s/%s" % (dst,date)
+os.mkdir("%s" % newdir)
+
+# now that we have a clean directory we can
+# loop through the defined repos, clone and build against them.
+for repodata in repos(repos_file):
+  # variablize data about this git repository
+  repourl = repodata[0]
+  local_branch = repodata[1]
+  upstream_branch = repodata[2]
+  path = repodata[3]  
+  localrepopath = "%s/%s" % (newdir, path)
+
+  # clone the git repo
+  os.system("git clone %s %s" % (repourl,localrepopath))
+  # hop in to the directory 
+  os.chdir(localrepopath)
+  # attempt to build a debian package
+  os.system("git-buildpackage -us -uc --git-debian-branch=%s --git-upstream-tree=branch   --git-upstream-branch=%s --git-ignore-new" % (local_branch, upstream_branch))
