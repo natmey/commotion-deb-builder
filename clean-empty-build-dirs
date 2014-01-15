@@ -1,0 +1,11 @@
+#!/bin/bash
+dst=$(grep dst /home/oti/debian/build-commotion.conf |cut -f3 -d " ")
+
+for dir in $(find "$dst" -maxdepth 1 -type d);do
+  count=$(ls $dir |wc -l)
+  if [ "$count" -eq 0 ];then
+    printf 'Removing %s.\n' "$dir" 
+    rmdir "$dir";
+  fi
+done
+exit 0
