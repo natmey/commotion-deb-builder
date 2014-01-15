@@ -44,12 +44,16 @@ for repodata in repos(repos_file):
   repourl = repodata[0]
   local_branch = repodata[1]
   upstream_branch = repodata[2]
-  path = repodata[3]  
+  path = repodata[3]
   localrepopath = "%s/%s" % (newdir, path)
-
+  os.mkdir(localrepopath)
   # clone the git repo
   os.system("git clone %s %s" % (repourl,localrepopath))
   # hop in to the directory 
   os.chdir(localrepopath)
+  workingcopy = os.system("git branch | awk '{print $2}'")
+  if workingcopy != local_branch:
+     os.system("git checkout %s" % (local_branch))
   # attempt to build a debian package
-  os.system("git-buildpackage -us -uc --git-debian-branch=%s --git-upstream-tree=branch   --git-upstream-branch=%s --git-ignore-new" % (local_branch, upstream_branch))
+  os.system("git-buildpackage -us -uc --git-debian-branch=%s --git-upstream-tree=branch --git-upstream-branch=%s --git-ignore-new" % (local_branch, upstream_branch))
+
