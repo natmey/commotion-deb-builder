@@ -5,3 +5,4 @@ https://github.com/opentechinstitute/serval-crypto.git master master serval-cryp
 https://github.com/opentechinstitute/commotion-linux-py.git master master commotion-linux-py
 https://github.com/opentechinstitute/luci-commotion-linux.git master master luci-commotion-linux
 https://github.com/opentechinstitute/commotion-mesh-applet.git master master commotion-mesh-applet
+https://github.com/opentechinstitute/nm-dispatcher-olsrd.git master master commotion-nm-dispatcher
