@@ -3,7 +3,7 @@ commotion-deb-builder
 
 A simple Python script to clone Commotion Wireless repos, and build them into Debian packages.
 
-It reads through a configuration file which specifies repos and branches to build from; and then uses `git-buildpackage` to turn them into debian packages. The script will likely crash if you do not.
+It reads through a configuration file which specifies repos and branches to build from; and then uses `git-buildpackage` to turn them into debian packages.
 
 Installing
 ----------
@@ -27,6 +27,8 @@ Here are a few lines from the current (as of writing) version of the file:
     https://github.com/opentechinstitute/olsrd.git commotion commotion olsrd
     https://github.com/opentechinstitute/serval-dna.git commotion-wireless commotion-wireless serval-dna
     https://github.com/opentechinstitute/commotion-service-manager.git master master commotion-service-manager
+
+NOTE: Right now, the two branch scheme is not implemented properly, and need to match! I plan to change this, but haven't implemented yet. So if you're building from "master," it will be "master master" in ther `repost.txt` file.
 
 ### build-commotion.conf
 Right now the only configuration options in the configuration file are:
