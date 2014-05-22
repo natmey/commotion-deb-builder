@@ -5,10 +5,16 @@ A simple Python script to clone Commotion Wireless repos, and build them into De
 
 It reads through a configuration file which specifies repos and branches to build from; and then uses `git-buildpackage` to turn them into debian packages.
 
-Installing
-----------
+Prerequisites
+-------------
 
-It is presumed that your system already has all of the build prerequisites, like `git-buildpackage`. It is also presumed that you have installed all dependencies that these packages will require.
+This script is currently written with Debian Jessie as a target.
+
+For Commotion to work, you will need a version of `libc6-dev` >= 2.18.
+
+For the builder script to work with Python 2.7 you will need to install the `python-configparser` package.
+
+You will also need `git-buildpackage` and all of its dependencies; which should cover a bunch of Debian developer tools.
 
 Usage
 -----
